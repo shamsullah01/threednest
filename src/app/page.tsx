@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import dynamic from "next/dynamic";
 import { 
   Mail, 
   Phone, 
@@ -36,8 +37,11 @@ import { useState, useEffect } from "react"
 export default function Portfolio() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [scrollY, setScrollY] = useState(0)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
+    setIsMounted(true)
+    
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
@@ -56,6 +60,7 @@ export default function Portfolio() {
   }, [])
 
   const calculateTransform = (depth: number) => {
+    if (!isMounted) return 'translateX(0px) translateY(0px)'
     const x = (mousePosition.x - window.innerWidth / 2) / depth
     const y = (mousePosition.y - window.innerHeight / 2) / depth
     return `translateX(${x}px) translateY(${y}px)`
