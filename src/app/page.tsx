@@ -357,6 +357,7 @@ export default function Portfolio() {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
+                  <Badge className="bg-green-500/20 text-green-300 border-green-500/30">Nest.js</Badge>
                   <Badge className="bg-green-500/20 text-green-300 border-green-500/30">Node.js</Badge>
                   <Badge className="bg-green-500/20 text-green-300 border-green-500/30">Express.js</Badge>
                 </div>
